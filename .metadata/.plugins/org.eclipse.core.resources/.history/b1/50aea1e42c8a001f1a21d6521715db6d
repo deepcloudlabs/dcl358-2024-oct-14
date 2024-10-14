@@ -1,0 +1,22 @@
+package com.example.ordering.service;
+
+import org.springframework.stereotype.Service;
+
+import com.example.ordering.dto.request.SubmitOrderRequest;
+import com.example.ordering.dto.response.SubmitOrderResponse;
+import com.example.ordering.repository.OrderRepository;
+
+@Service
+public class OrderHandlerService {
+	private final OrderRepository orderRepository;
+	
+	public OrderHandlerService(OrderRepository orderRepository) {
+		this.orderRepository = orderRepository;
+	}
+
+	public SubmitOrderResponse handleRequest(SubmitOrderRequest request) {
+		
+		return null;
+	}
+
+}

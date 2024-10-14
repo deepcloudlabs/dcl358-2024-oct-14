@@ -1,0 +1,15 @@
+package com.example.ordering.event;
+
+public class OrderCreatedEvent extends OrderEvent {
+	private long orderId;
+	private String customerId;
+
+	public OrderCreatedEvent() {
+	}
+
+	public OrderCreatedEvent(long orderId, String customerId) {
+		this.orderId = orderId;
+		this.customerId = customerId;
+	}
+
+}

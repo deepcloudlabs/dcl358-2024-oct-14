@@ -1,0 +1,5 @@
+package com.example.ordering.entity;
+
+public class Item {
+
+}

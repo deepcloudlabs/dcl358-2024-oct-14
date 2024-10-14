@@ -1,0 +1,15 @@
+package com.example.ordering.service;
+
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Service;
+
+import com.example.ordering.event.OrderEvent;
+
+@Service
+public class OutboxService {
+
+	@EventListener
+	public void handleOrderEvent(OrderEvent event) {
+		
+	}
+}

@@ -1,0 +1,5 @@
+package com.example.ordering.outbox.entity;
+
+public class OutboxEvent {
+
+}

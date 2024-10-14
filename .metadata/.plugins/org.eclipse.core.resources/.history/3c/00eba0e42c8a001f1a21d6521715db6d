@@ -1,0 +1,31 @@
+package com.example.ordering.event;
+
+public abstract class OrderEvent {
+	private int sequenceId;
+	private long timestamp;
+
+	public OrderEvent() {
+	}
+
+	public OrderEvent(int sequenceId, long timestamp) {
+		this.sequenceId = sequenceId;
+		this.timestamp = timestamp;
+	}
+
+	public int getSequenceId() {
+		return sequenceId;
+	}
+
+	public void setSequenceId(int sequenceId) {
+		this.sequenceId = sequenceId;
+	}
+
+	public long getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(long timestamp) {
+		this.timestamp = timestamp;
+	}
+
+}

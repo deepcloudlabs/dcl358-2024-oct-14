@@ -1,0 +1,5 @@
+package com.example.ordering.event;
+
+public class OrderEvent {
+
+}

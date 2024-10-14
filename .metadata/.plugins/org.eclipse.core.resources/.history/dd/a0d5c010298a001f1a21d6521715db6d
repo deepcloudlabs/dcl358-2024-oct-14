@@ -1,0 +1,16 @@
+package com.example.ordering.service;
+
+import org.springframework.stereotype.Service;
+
+import com.example.ordering.dto.request.SubmitOrderRequest;
+import com.example.ordering.dto.response.SubmitOrderResponse;
+
+@Service
+public class OrderHandlerService {
+
+	public SubmitOrderResponse handleRequest(SubmitOrderRequest request) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

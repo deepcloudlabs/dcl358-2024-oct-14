@@ -1,0 +1,5 @@
+package com.example.ordering.dto.request;
+
+public class SubmitOrderRequest {
+
+}
