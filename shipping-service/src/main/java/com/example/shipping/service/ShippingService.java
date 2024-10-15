@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 public class ShippingService {
 
 	
-	@KafkaListener(topics = {"${eventTopicName}"},groupId = "shipping-service")
+	@KafkaListener(topics = {"${orderEventTopicName}"},groupId = "shipping-service")
 	public void handleOrderEvent(String event) {
 		System.out.println("New order has arrived: %s".formatted(event));
 	}

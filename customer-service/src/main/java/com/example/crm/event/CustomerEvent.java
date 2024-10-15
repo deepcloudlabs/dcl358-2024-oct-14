@@ -4,6 +4,20 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
+@JsonTypeInfo(
+		use = JsonTypeInfo.Id.NAME,
+		include = JsonTypeInfo.As.PROPERTY,
+		property = "type")
+@JsonSubTypes({
+	@Type(value=CustomerCreatedEvent.class,name="CUSTOMER_CREATED"),
+	@Type(value=CustomerRemovedEvent.class,name="CUSTOMER_REMOVED"),
+	@Type(value=CustomerAddressesChangedEvent.class,name="CUSTOMER_ADDRESS_CHANGED"),
+	@Type(value=CustomerAddressPhonesChangedEvent.class,name="CUSTOMER_PHONE_CHANGED")	
+})
 public abstract class CustomerEvent {
 	private String eventId = UUID.randomUUID().toString();
 	private CustomerEventType type;

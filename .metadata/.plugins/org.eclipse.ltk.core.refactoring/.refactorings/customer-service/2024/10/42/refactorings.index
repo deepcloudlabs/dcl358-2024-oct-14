@@ -4,3 +4,5 @@
 1728983812252	Rename package 'com.example.ordering.outbox.repository'
 1728983842586	Rename package 'com.example.ordering.outbox.service'
 1728984284039	Extract local variable 'updatedCustomer'
+1728989787009	Copy package
+1728989964076	Copy package

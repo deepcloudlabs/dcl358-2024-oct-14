@@ -35,6 +35,7 @@ public class OutboxService {
 		try {
 			var eventAsJson = objectMapper.writeValueAsString(event);
 			var outboxEvent = new OutboxEvent(event.getEventId(), eventAsJson);
+			System.out.println(outboxEvent);
 			outboxRepository.save(outboxEvent);
 		} catch (JsonProcessingException e) {
 			System.out.println("Error while serializing to JSON: %s".formatted(e.getMessage()));

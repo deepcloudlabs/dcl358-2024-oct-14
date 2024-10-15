@@ -1,11 +1,13 @@
 package com.example.crm.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -47,10 +49,16 @@ public class CustomerRestController {
 		return customerService.acquireCustomer(customer);
 	}
 	
-	@PutMapping
-	public CustomerDocument updateCustomer(@RequestBody CustomerDocument customer) {
+	@PutMapping("{identity}")
+	public CustomerDocument updateCustomer(@PathVariable String identity,@RequestBody CustomerDocument customer) {
 		return customerService.updateCustomer(customer);
 	}
+
+	@PatchMapping("{identity}")
+	public CustomerDocument patchCustomer(@PathVariable String identity,@RequestBody Map<String,Object> patchRequest) {
+		return customerService.patchCustomer(identity,patchRequest);
+	}
+	
 	
 	@DeleteMapping("{identity}")
 	public CustomerDocument removeCustomerById(@PathVariable String identity) {
