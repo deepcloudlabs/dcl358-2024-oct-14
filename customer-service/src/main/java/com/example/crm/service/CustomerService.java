@@ -6,14 +6,18 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.example.crm.document.CustomerDocument;
+import com.example.crm.event.CustomerCreatedEvent;
+import com.example.crm.event.CustomerRemovedEvent;
 import com.example.crm.repository.CustomerDocumentRepository;
 
 @Service
 public class CustomerService {
 	private final CustomerDocumentRepository customerDocumentRepository;
+	private final CustomerEventPublisherService publisherService;
 	
-	public CustomerService(CustomerDocumentRepository customerDocumentRepository) {
+	public CustomerService(CustomerDocumentRepository customerDocumentRepository, CustomerEventPublisherService publisherService) {
 		this.customerDocumentRepository = customerDocumentRepository;
+		this.publisherService = publisherService;
 	}
 
 	public CustomerDocument findById(String identity) {
@@ -25,16 +29,20 @@ public class CustomerService {
 	}
 
 	public CustomerDocument acquireCustomer(CustomerDocument customer) {
-		return customerDocumentRepository.insert(customer);
+		var insertedDocument = customerDocumentRepository.insert(customer);
+		publisherService.publishEvent(new CustomerCreatedEvent(insertedDocument));
+		return insertedDocument;
 	}
 
 	public CustomerDocument updateCustomer(CustomerDocument customer) {
-		return customerDocumentRepository.save(customer);
+		CustomerDocument updatedCustomer = customerDocumentRepository.save(customer);
+		return updatedCustomer;
 	}
 
 	public CustomerDocument releaseCustomer(String identity) {
 		var customer = customerDocumentRepository.findById(identity).orElseThrow(() -> new IllegalArgumentException("Cannot find the customer (%s)".formatted(identity)));
 		customerDocumentRepository.delete(customer);
+		publisherService.publishEvent(new CustomerRemovedEvent(identity));
 		return customer;
 	}
 

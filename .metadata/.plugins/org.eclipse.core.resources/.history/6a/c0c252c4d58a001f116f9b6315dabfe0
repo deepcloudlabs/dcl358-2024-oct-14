@@ -1,0 +1,14 @@
+spring.application.name=customer-service
+
+server.port=4400
+
+server.servlet.context-path=/customer-service
+spring.mvc.servlet.path=/api/v1
+
+eventTopicName=customer-events
+
+#mongodb configuration
+spring.data.mongodb.uri=mongodb://localhost:27017/crm
+
+spring.kafka.producer.key-serializer=org.apache.kafka.common.serialization.StringSerializer
+spring.kafka.producer.value-serializer=org.apache.kafka.common.serialization.StringSerializer

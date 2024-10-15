@@ -1,0 +1,6 @@
+1728982506729	Extract local variable 'insertedDocument'
+1728982844700	Rename type 'EventType'
+1728983795956	Rename package 'com.example.ordering.outbox.entity'
+1728983812252	Rename package 'com.example.ordering.outbox.repository'
+1728983842586	Rename package 'com.example.ordering.outbox.service'
+1728984284039	Extract local variable 'updatedCustomer'
