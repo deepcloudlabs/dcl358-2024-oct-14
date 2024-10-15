@@ -1,5 +1,7 @@
 package com.example.crm.document;
 
+import java.util.Objects;
+
 public class Address {
 	private AddressType type;
 	private String country;
@@ -48,6 +50,24 @@ public class Address {
 
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(city, country, line, type, zipCode);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Address other = (Address) obj;
+		return Objects.equals(city, other.city) && Objects.equals(country, other.country)
+				&& Objects.equals(line, other.line) && type == other.type && Objects.equals(zipCode, other.zipCode);
 	}
 
 	@Override

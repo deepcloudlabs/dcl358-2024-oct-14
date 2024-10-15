@@ -7,9 +7,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.example.crm.document.CustomerDocument;
-import com.example.crm.event.CustomerAddressPhonesChangedEvent;
 import com.example.crm.event.CustomerAddressesChangedEvent;
 import com.example.crm.event.CustomerCreatedEvent;
+import com.example.crm.event.CustomerPhonesChangedEvent;
 import com.example.crm.event.CustomerRemovedEvent;
 import com.example.crm.repository.CustomerDocumentRepository;
 
@@ -41,9 +41,13 @@ public class CustomerService {
 
 	public CustomerDocument updateCustomer(CustomerDocument customer) {
 		String identity = customer.getIdentity();
-		var existingCustomer = customerDocumentRepository.findById(identity);
+		var existingCustomer = customerDocumentRepository.findById(identity)
+				.orElseThrow(() -> new IllegalArgumentException("Cannot find the customer (%s)".formatted(identity)));
+		if(!existingCustomer.getAddresses().containsAll(customer.getAddresses()))
+			publisherService.publishEvent(new CustomerAddressesChangedEvent(identity, customer.getAddresses()));
+		if(!existingCustomer.getPhones().containsAll(customer.getPhones()))
+			publisherService.publishEvent(new CustomerPhonesChangedEvent(identity, customer.getPhones()));
 		CustomerDocument updatedCustomer = customerDocumentRepository.save(customer);
-
 		return updatedCustomer;
 	}
 
@@ -66,13 +70,12 @@ public class CustomerService {
 					publisherService.publishEvent(new CustomerAddressesChangedEvent(identity, value));
 				}
 				case "phones" -> {
-					publisherService.publishEvent(new CustomerAddressPhonesChangedEvent(identity, value));
+					publisherService.publishEvent(new CustomerPhonesChangedEvent(identity, value));
 				}
 				default -> {
 					throw new IllegalArgumentException("Unexpected value: " + field);
 				}
 			}
-			System.out.println("%s: %s".formatted(field, value));
 		});
 		return customer;
 	}

@@ -1,5 +1,7 @@
 package com.example.shipping.document;
 
+import java.util.Objects;
+
 public class Phone {
 	private PhoneType type;
 	private String countryCode;
@@ -30,6 +32,24 @@ public class Phone {
 
 	public void setNumber(String number) {
 		this.number = number;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(countryCode, number, type);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Phone other = (Phone) obj;
+		return Objects.equals(countryCode, other.countryCode) && Objects.equals(number, other.number)
+				&& type == other.type;
 	}
 
 	@Override

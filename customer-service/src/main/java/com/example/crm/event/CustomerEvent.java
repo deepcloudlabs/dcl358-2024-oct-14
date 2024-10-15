@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 	@Type(value=CustomerCreatedEvent.class,name="CUSTOMER_CREATED"),
 	@Type(value=CustomerRemovedEvent.class,name="CUSTOMER_REMOVED"),
 	@Type(value=CustomerAddressesChangedEvent.class,name="CUSTOMER_ADDRESS_CHANGED"),
-	@Type(value=CustomerAddressPhonesChangedEvent.class,name="CUSTOMER_PHONE_CHANGED")	
+	@Type(value=CustomerPhonesChangedEvent.class,name="CUSTOMER_PHONE_CHANGED")	
 })
 public abstract class CustomerEvent {
 	private String eventId = UUID.randomUUID().toString();
