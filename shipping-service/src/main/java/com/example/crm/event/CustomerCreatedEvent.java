@@ -5,7 +5,6 @@ import com.example.shipping.document.CustomerDocument;
 public class CustomerCreatedEvent extends CustomerEvent {
 	private CustomerDocument customer;
 	
-	
 	public CustomerCreatedEvent() {
 	}
 
