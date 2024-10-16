@@ -1,5 +1,0 @@
-package com.example.ordering.dto.response;
-
-public class SubmitOrderResponse {
-
-}

@@ -12,6 +12,7 @@
         </endorsedDirs>
     </libraryInfo>
     <libraryInfo home="C:\DEVEL\stage\opt\sts-4.25.0\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.4.v20240802-1551\jre" version="21.0.4"/>
+    <libraryInfo home="D:\DEVEL\stage\opt\jdk-17.0.6" version="17.0.6"/>
     <libraryInfo home="C:\DEVEL\stage\opt\jdk-17.0.6" version="17.0.6"/>
     <libraryInfo home="D:\DEVEL\stage\opt\jdk-22.0.1" version="22.0.1"/>
 </libraryInfos>

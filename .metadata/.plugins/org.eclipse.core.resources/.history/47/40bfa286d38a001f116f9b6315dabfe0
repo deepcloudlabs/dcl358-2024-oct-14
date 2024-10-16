@@ -1,5 +1,0 @@
-package com.example.crm.event;
-
-public enum EventType {
-
-}
