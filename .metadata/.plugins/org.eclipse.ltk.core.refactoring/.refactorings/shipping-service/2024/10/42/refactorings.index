@@ -2,3 +2,5 @@
 1728989978086	Rename package 'com.example.crm.event'
 1728991233023	Rename package 'com.example.shipping.event'
 1729014681026	Rename package 'com.example.crm.repository'
+1729064508945	Rename type 'CustomerReplicationService'
+1729064666526	Copy compilation unit
